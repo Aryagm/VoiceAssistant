@@ -21,6 +21,8 @@ from datetime import date
 
 if __name__ == '__main__':
     while True:
+        
+        # Listening to the user and initializing some variables:
         init = listen.listen_0()
         query = listen.take_command()
         query_lower = query.lower()
@@ -33,6 +35,8 @@ if __name__ == '__main__':
         date1 = False
         wikipedia = False
         math = False
+        
+        # Checking for the intent and stop the program if exit intent is True:
         for x in setup.stop_intent:
             if x == query_lower:
                 print("terminate")
@@ -40,8 +44,10 @@ if __name__ == '__main__':
                 break
         if terminate == True:
             speak("Process terminated. Goodbye! ")
-            break
+            break    
         print(query)
+        
+        # Check if user wants to send email and if True send the email:
         for x in setup.email_intent:
             if x in query and setup.email==True:
                 speak("Whom do you want to send an email to?")
@@ -155,7 +161,8 @@ if __name__ == '__main__':
                         speak("Email deleted. Goodbye! ")
                         email = True
                         break
-
+        
+        # Check if user wants to view youtube and if True start the video:
         for x in setup.youtube_intent:
             if x in query and email == False and setup.youtube == True:
                 try:
@@ -188,6 +195,8 @@ if __name__ == '__main__':
                     speak("There was an error playing the video. Please try again.")
                     break
 
+                    
+        # Check if user wants to check the weather of a city and if True send the weather:
         for x in setup.weather_location_intent:
             if x in query and yt == False and setup.weather_location == True:
                 city = query.replace(x,"")
@@ -209,6 +218,7 @@ if __name__ == '__main__':
                     weather_loc = True
                     break
 
+        # Check if user wants to check the weather of their location and if True send the weather:
         for x in setup.weather_intent:
             if x in query and weather_loc == False and setup.weather == True:
                 try:
@@ -223,6 +233,7 @@ if __name__ == '__main__':
                     weather = True
                     break
 
+        # Check if user wants to check the time and if True tell the time:
         for x in setup.time_intent:
             if x in query and weather == False and setup.time == True:
                 try:
@@ -239,6 +250,7 @@ if __name__ == '__main__':
                     time = True
                     break
 
+        # Check if user wants to check the date and if True tell the date:
         for x in setup.date_intent:
             from datetime import date
             if x in query and setup.date == True:
@@ -254,7 +266,7 @@ if __name__ == '__main__':
                     speak("There was an error getting the date. Please try again!")
                     date1 = True
                     break
-
+        # Check if user wants to get some wiki info and if True find the article:
         for r in range(1):
             if 'what is' in query and date == False and time == False:
                 text = query.replace('tell me what is', "")
@@ -295,7 +307,8 @@ if __name__ == '__main__':
                         speak("Article not found. Please try again.")
                         wikipedia = True
                         break
-
+                        
+        # Check if user wants to get some wiki info and if True find the article:
         for x in setup.wiki_intent:
             if x in query and math == False and wikipedia == False and setup.wiki == True:
                 text = query.replace(x, "")
@@ -325,7 +338,8 @@ if __name__ == '__main__':
                     speak("Article not found. Please try again later.")
                     wikipedia = True
                     break
-
+        
+        # Check if user wants to get solve a math problem, if true tell the answer:
         for x in setup.math_intent:
             if x in query and math == False and wikipedia == False and setup.math == True:
                 text = query.replace(x, "")
@@ -343,6 +357,7 @@ if __name__ == '__main__':
                     math = True
                     break
 
+         # If the user says something the bot does not understand. Give an error message:
         if yt == False and email == False and weather == False and weather_loc==False and time == False and date1 == False and wikipedia == False and math == False:
             print("I could not understand you, please try calling me again. Goodbye!")
             speak("I could not understand you, please try calling me again. Goodbye!")
