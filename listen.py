@@ -7,6 +7,7 @@ from speech import speak
 intro = setup.introduction
 
 def listen_0():
+    """The initial listening, if the the wake_word is found then activate the bot"""
     r = sr.Recognizer()
     while True:
         with sr.Microphone() as source:
@@ -26,6 +27,7 @@ def listen_0():
 
 
 def take_command():
+    """The function to take the command from the user""""
     r = sr.Recognizer()
     while True:
         with sr.Microphone() as source:
@@ -45,6 +47,7 @@ def take_command():
 
 
 def email_recipients():
+    """Understanding the email recipients from user speech"""
     r = sr.Recognizer()
     while True:
         with sr.Microphone() as source:
@@ -67,6 +70,7 @@ def email_recipients():
 
 
 def email_sub():
+    """Recognizing the email subject from user speech"""
     r = sr.Recognizer()
     while True:
         with sr.Microphone() as source:
@@ -86,6 +90,7 @@ def email_sub():
 
 
 def email_body():
+    """Recognizing the email body from user speech"""
     r = sr.Recognizer()
     while True:
         with sr.Microphone() as source:
@@ -105,6 +110,7 @@ def email_body():
 
 
 def email_confirm():
+    """Recognizing the email confirmation from user speech"""
     r = sr.Recognizer()
     while True:
         with sr.Microphone() as source:
@@ -124,6 +130,7 @@ def email_confirm():
 
 
 def youtube_listen():
+    """Recognizing the youtube video name from user speech"""
     r = sr.Recognizer()
     while True:
         with sr.Microphone() as source:
