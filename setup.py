@@ -1,3 +1,9 @@
+"""
+This is a setup file. Changing the variables below will change the properties of the voice assistant.
+The variables are self explanatory.
+"""
+
+
 bot_name = 'Jarvis'
 
 bot_gender = 'Male'
