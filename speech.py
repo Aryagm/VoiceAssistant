@@ -3,6 +3,7 @@ import setup
 
 
 #Initializing the text-to-speech engine
+# It will assign the value as male or female based on setup.py
 engine = tts.init('sapi5')
 voices = engine.getProperty('voices')
 if setup.bot_gender == 'Male':
