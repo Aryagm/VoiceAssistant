@@ -10,7 +10,7 @@ def listen_0():
     """The initial listening, if the the wake_word is found then activate the bot"""
     r = sr.Recognizer()
     while True:
-        with sr.Microphone() as source:
+        with sr.Microphone(2) as source:
             r.adjust_for_ambient_noise(source)
             print("Ready...")
             try:
@@ -27,10 +27,10 @@ def listen_0():
 
 
 def take_command():
-    """The function to take the command from the user""""
+    """The function to take the command from the user"""
     r = sr.Recognizer()
     while True:
-        with sr.Microphone() as source:
+        with sr.Microphone(2) as source:
             print("Listening...")
             r.adjust_for_ambient_noise(source, duration=1)
             playsound('ding.mp3')
@@ -50,7 +50,7 @@ def email_recipients():
     """Understanding the email recipients from user speech"""
     r = sr.Recognizer()
     while True:
-        with sr.Microphone() as source:
+        with sr.Microphone(2) as source:
             print("Listening...")
             r.adjust_for_ambient_noise(source, duration=1)
             playsound('ding.mp3')
@@ -73,7 +73,7 @@ def email_sub():
     """Recognizing the email subject from user speech"""
     r = sr.Recognizer()
     while True:
-        with sr.Microphone() as source:
+        with sr.Microphone(2) as source:
             print("Listening...")
             r.adjust_for_ambient_noise(source, duration=1)
             playsound('ding.mp3')
@@ -93,7 +93,7 @@ def email_body():
     """Recognizing the email body from user speech"""
     r = sr.Recognizer()
     while True:
-        with sr.Microphone() as source:
+        with sr.Microphone(2) as source:
             print("Listening...")
             r.adjust_for_ambient_noise(source, duration=1)
             playsound('ding.mp3')
@@ -113,7 +113,7 @@ def email_confirm():
     """Recognizing the email confirmation from user speech"""
     r = sr.Recognizer()
     while True:
-        with sr.Microphone() as source:
+        with sr.Microphone(2) as source:
             print("Listening...")
             r.adjust_for_ambient_noise(source, duration=1)
             playsound('ding.mp3')
@@ -133,7 +133,7 @@ def youtube_listen():
     """Recognizing the youtube video name from user speech"""
     r = sr.Recognizer()
     while True:
-        with sr.Microphone() as source:
+        with sr.Microphone(2) as source:
             print("Listening...")
             r.adjust_for_ambient_noise(source, duration=1)
             playsound('ding.mp3')

@@ -29,8 +29,8 @@ if __name__ == '__main__':
         terminate = False
         email = False
         yt = False
-        weather = False
-        weather_loc = False
+        weather_bool = False
+        weather_bool_loc = False
         time = False
         date1 = False
         wikipedia = False
@@ -196,7 +196,7 @@ if __name__ == '__main__':
                     break
 
                     
-        # Check if user wants to check the weather of a city and if True send the weather:
+        # Check if user wants to check the weather_bool of a city and if True send the weather_bool:
         for x in setup.weather_location_intent:
             if x in query and yt == False and setup.weather_location == True:
                 city = query.replace(x,"")
@@ -208,34 +208,34 @@ if __name__ == '__main__':
                         break
                     else:
                         weather.city_weather(city)
-                        weather_loc = True
+                        weather_bool_loc = True
                         break
-                    break
+                    
                 except:
                     error_state = "There was an error getting the weather. Please make sure the city you named exists and that you have internet connection."
                     print(error_state)
                     speak(error_state)
-                    weather_loc = True
+                    weather_bool_loc = True
                     break
 
-        # Check if user wants to check the weather of their location and if True send the weather:
+        # Check if user wants to check the weather_bool of their location and if True send the weather_bool:
         for x in setup.weather_intent:
-            if x in query and weather_loc == False and setup.weather == True:
+            if x in query and weather_bool_loc == False and setup.weather == True:
                 try:
                     weather.user_weather()
-                    weather = True
+                    weather_bool = True
                     break
                 except:
                     print(
                         "There was an error getting the weather. Please make sure you have an internet connection.")
                     speak(
                         "There was an error getting the weather. Please make sure you have an internet connection.")
-                    weather = True
+                    weather_bool = True
                     break
 
         # Check if user wants to check the time and if True tell the time:
         for x in setup.time_intent:
-            if x in query and weather == False and setup.time == True:
+            if x in query and weather_bool == False and setup.time == True:
                 try:
                     time_now = datetime.now()
                     current_time = time_now.strftime("%I:%M %p")
@@ -256,7 +256,7 @@ if __name__ == '__main__':
             if x in query and setup.date == True:
                 try:
                     date_today = date.today()
-                    date_statement = "Todays date is "+date_today
+                    date_statement = "Todays date is "+str(date_today)
                     print("Todays Date: ", date_today)
                     speak(date_statement)
                     date1 = True
@@ -285,7 +285,7 @@ if __name__ == '__main__':
                     math = True
                     break
                 except:
-                    try:
+                    #try:
                         ans = text.lower()
                         page = wiki_wiki.page(text)
                         ans = page.text
@@ -302,11 +302,11 @@ if __name__ == '__main__':
                         speak(final)
                         wikipedia = True
                         break
-                    except:
-                        print('Article not found. Please try again.')
-                        speak("Article not found. Please try again.")
-                        wikipedia = True
-                        break
+                    #except:
+                    #    print('Article not found. Please try again.')
+                    #    speak("Article not found. Please try again.")
+                    #    wikipedia = True
+                    #    break
                         
         # Check if user wants to get some wiki info and if True find the article:
         for x in setup.wiki_intent:
@@ -345,7 +345,7 @@ if __name__ == '__main__':
                 text = query.replace(x, "")
                 try:
                     ans = eval(text)
-                    ans_state = text + " is equal to "+ans
+                    ans_state = text + " is equal to "+str(ans)
                     print(ans_state)
                     speak(ans_state)
                     math = True
@@ -358,7 +358,7 @@ if __name__ == '__main__':
                     break
 
          # If the user says something the bot does not understand. Give an error message:
-        if yt == False and email == False and weather == False and weather_loc==False and time == False and date1 == False and wikipedia == False and math == False:
+        if yt == False and email == False and weather_bool == False and weather_bool_loc==False and time == False and date1 == False and wikipedia == False and math == False:
             print("I could not understand you, please try calling me again. Goodbye!")
             speak("I could not understand you, please try calling me again. Goodbye!")
             continue

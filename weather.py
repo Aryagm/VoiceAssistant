@@ -98,7 +98,6 @@ def user_weather():
     x = response.json()
     
     # Getting the weather details from the json file:
-    location = x['name']
     description = x['weather'][0]['description']
     tempreature = str(round(x['main']['temp'] - 273.15, 2)) + "°C"
     feel = str(round(x['main']['feels_like'] - 273.15, 2)) + "°C"
@@ -111,7 +110,7 @@ def user_weather():
         x['sys']['sunset']).strftime('%I:%M %p'))
     
     # Printing out the details:
-    print("Location: "+location)
+    #print("Location: "+location)
     print("Tempreature: "+tempreature)
     print("Description: "+description)
     print("Feels Like: "+feel)
@@ -121,7 +120,7 @@ def user_weather():
     print("Todays Sunset: "+sunset)
     
     # Creating the final statement:
-    statement = "In "+location+" , "+"The temperature is "+tempreature+", "+"It feels like "+feel+". "+"The forecast is "+description+". "+"The wind speed is " + \
+    statement = "The temperature is "+tempreature+", "+"It feels like "+feel+". "+"The forecast is "+description+". "+"The wind speed is " + \
         wind_speed+". "+"The minimum temperature is "+min_temp+" and the maximum temperature is " + \
         max_temp+". "+"Todays sunrise: "+sunrise+", and todays sunset: "+sunset
    
